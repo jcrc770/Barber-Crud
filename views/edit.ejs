@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>BARBERSHOP</title>
+  </head>
+  <body>
+    
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1">| BARBERSHOP | Sistema de Registro de Citas |</span>
+    </div>
+  </nav>
+  <% if (user){ %>
+  <div class="container mt-4">
+    <div class="card-header">Editar cita</div>
+    <div class="card-body">
+        <form action="/update" method="POST">
+            <input id="id" name="id" value="<%= user.id %>" hidden>
+            <div class="mb-3">
+                <label for="user" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" value="<%= user.nombre %>" tabindex="1">
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">Telefono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" value="<%= user.telefono %>" tabindex="1">
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">Servicio</label>
+                <select name="servicio" id="servicio" class="form-select"  tabindex="2" >
+                    <option <%= user.servicio=='corte'? "selected" : '' %> value="corte">Corte</option>
+                    <option <%= user.servicio=='barba'? "selected" : '' %> value="barba">Barba</option>
+                    <option <%= user.servicio=='bigote'? "selected" : '' %> value="bigote">Bigote</option>
+                    <option <%= user.servicio=='ceja'? "selected" : '' %> value="ceja">Ceja</option>
+                    <option <%= user.servicio=='corte y ceja'? "selected" : '' %> value="corte y ceja">Corte y Ceja</option>
+                    <option <%= user.servicio=='corte y barba'? "selected" : '' %> value="corte y barba">Corte y Barba</option>
+                    <option <%= user.servicio=='corte barba y ceja'? "selected" : '' %> value="corte barba y ceja">Corte, Barba y Ceja</option>
+
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">Fecha</label>
+                <input type="text" name="fecha" id="fecha value="<%= user.fecha %>"">
+            </div>
+            <div class="mb-3">
+                <label for="user" class="form-label">Hora</label>
+                <input type="text" name="hora" id="hora" value="<%= user.hora %>">
+            </div>
+            
+            <div class="mb-3">
+                <label for="user" class="form-label">Barbero</label>
+                <select name="barbero" id="barbero" class="form-select"  tabindex="2" >
+                <option <%= user.barbero=='carlos'? "selected" : '' %> value="carlos">Carlos Ramirez</option>
+                <option <%= user.barbero=='renato'? "selected" : '' %> value="renato">Renato Navarrete</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" tabindex="5">Guardar</button>
+            <a href="/" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+<% } %>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+  </body>
+</html>
